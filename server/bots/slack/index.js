@@ -74,9 +74,8 @@ class slackBot {
 	}
 
 	addEvent(cb, name) {
-		let self = this;
-		this._bot.on(name, function (...args) {
-			cb.call(this, self._bot, ...args);
+		this._bot.on(name, (...args) => {
+			cb(this.bot(), ...args);
 		});
 	}
 }
